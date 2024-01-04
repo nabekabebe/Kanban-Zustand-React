@@ -1,0 +1,32 @@
+.task{
+    background-color: #F6B17A;
+    color: #2D3250;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 2px;
+    margin-bottom: .8rem;
+    cursor: move;
+}
+.task h4{
+    margin: 0;
+    margin-bottom: 1rem;
+}
+.task .footer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.task .footer .status{
+    font-size: small;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    text-align: center;
+    padding: .1rem;
+    padding-left: .6rem;
+    padding-right: .6rem;
+}
