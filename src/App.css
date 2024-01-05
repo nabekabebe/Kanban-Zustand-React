@@ -1,6 +1,18 @@
+.app{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.app h2{
+  text-align: center;
+  padding: 1rem 0;
+  margin: 0;
+}
 .container{
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: #2D3250;
   display: flex;
   justify-content: center;

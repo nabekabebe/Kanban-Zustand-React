@@ -5,14 +5,14 @@ function App() {
   const columns = ["Todo", "In Progress", "Done"];
 
   return (
-    <>
-      <h2 style={{ textAlign: "center" }}>Kanban Todo</h2>
+    <div className="app">
+      <h2>Kanban Todo</h2>
       <div className="container">
         {columns.map((col) => (
           <Column key={col} name={col} />
         ))}
       </div>
-    </>
+    </div>
   );
 }
 

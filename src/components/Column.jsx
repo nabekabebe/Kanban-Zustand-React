@@ -54,7 +54,7 @@ export default function Column({ name }) {
         <h3>{name}</h3>
         <button onClick={() => setOpen(true)}>+</button>
       </div>
-      <div>
+      <div className={colStyle.body}>
         {filteredTasks &&
           filteredTasks.map((tsk) => (
             <TaskCard
