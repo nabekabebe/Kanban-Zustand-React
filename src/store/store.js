@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
 const store = (set) => ({
-  tasks: [{ title: "Install", status: "done" }],
+  tasks: [],
   addTask: (title, status) =>
     set(
       (store) => ({ tasks: [...store.tasks, { title, status }] }),
