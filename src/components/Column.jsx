@@ -15,7 +15,7 @@ export default function Column({ name }) {
   const filteredTasks = useMemo(
     () =>
       tasks.filter((tsk) => tsk.status.toLowerCase() === name.toLowerCase()),
-    [tasks]
+    [tasks, name]
   );
 
   const [open, setOpen] = useState(false);

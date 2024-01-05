@@ -1,22 +1,25 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
+import { produce } from "immer";
 
 const store = (set) => ({
   tasks: [],
   addTask: (title, status) =>
     set(
-      (store) => ({ tasks: [...store.tasks, { title, status }] }),
+      produce((store) => {
+        store.tasks.push({ title, status });
+      }),
       false,
       "addTask"
     ),
   removeTask: (title) =>
     set((store) => ({
-      tasks: store.tasks.filter((tsk) => tsk.title != title),
+      tasks: store.tasks.filter((tsk) => tsk.title !== title),
     })),
   updateTask: (title, status) =>
     set((store) => ({
       tasks: store.tasks.map((tsk) =>
-        tsk.title == title ? { title, status } : tsk
+        tsk.title === title ? { title, status } : tsk
       ),
     })),
   drag: null,
