@@ -1,4 +1,10 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import TaskCard from "./TaskCard.jsx";
 
 import colStyle from "./column.module.css";
@@ -30,6 +36,23 @@ export default function Column({ name }) {
 
   const [setDrag, drag] = useTodoStore((state) => [state.setDrag, state.drag]);
   const [dragActive, setDragActive] = useState(false);
+  const btnRef = useRef(null);
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
+      if (e.key === "Enter" && btnRef.current) {
+        btnRef.current.click();
+      }
+    };
+    window.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, []);
 
   return (
     <div
@@ -65,9 +88,18 @@ export default function Column({ name }) {
           ))}
       </div>
       {open && (
-        <div className={colStyle.modal}>
+        <div
+          className={colStyle.modal}
+          onClick={(e) => {
+            if (e.target == e.currentTarget) {
+              e.stopPropagation();
+              setOpen(false);
+            }
+          }}
+        >
           <div className={colStyle.modalContent}>
             <input
+              autoFocus
               name="todo"
               placeholder="Enter title"
               onChange={(e) => setTaskTitle(e.target.value)}
@@ -87,6 +119,7 @@ export default function Column({ name }) {
                     setOpen(false);
                   }
                 }}
+                ref={btnRef}
               >
                 Add
               </button>
