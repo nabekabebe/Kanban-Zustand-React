@@ -83,7 +83,7 @@ export default function Column({ name }) {
               <button
                 onClick={() => {
                   if (taskTitle) {
-                    addTask(taskTitle, name);
+                    addTask(taskTitle, name.toLowerCase());
                     setOpen(false);
                   }
                 }}
